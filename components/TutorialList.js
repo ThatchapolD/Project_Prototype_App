@@ -18,7 +18,7 @@ function TutorialList() {
       </Card>
       <Card>
         <Text style={styles.text}>
-          3. Wait for the result please the close the app
+          3. Wait for the result (Don't close the app)
         </Text>
       </Card>
       <Card>
