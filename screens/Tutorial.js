@@ -1,13 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-//Importing Style Color
+//Import Style Color
 import { GlobalColor } from "../style/Color";
+import TutorialList from "../components/TutorialList";
 
 function Tutorial() {
   return (
     <View style={styles.container}>
-      <Text style={styles.Text}>Tutorial</Text>
+      <TutorialList />
     </View>
   );
 }
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  Text: {
+  text: {
     color: "white",
   },
 });
