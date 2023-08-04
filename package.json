@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.8",
+    "axios": "^1.4.0",
     "expo": "~49.0.5",
     "expo-image-picker": "~14.3.2",
     "expo-status-bar": "~1.6.0",
