@@ -3,6 +3,7 @@ import React from "react";
 
 //Importing Components
 import ImageCarousel from "../components/Image_Carousel";
+import Banknotes_Info from "../components/Banknotes_Info";
 
 //Importing Style Color
 import { GlobalColor } from "../style/Color";
@@ -23,9 +24,16 @@ const Result = () => {
   return (
     <View style={styles.container}>
       <Card>
-        <Text style={styles.text}>Infomation of your Banknotes</Text>
+        <Text style={styles.text}>Information of your Banknotes</Text>
       </Card>
       <ImageCarousel images={images} />
+      <Banknotes_Info
+        Series={"11"}
+        Date={"11 Nov 2077"}
+        Signature={"Johnny Silverhand"}
+        Serial_Number={"6969"}
+        Amount={"1M"}
+      />
     </View>
   );
 };

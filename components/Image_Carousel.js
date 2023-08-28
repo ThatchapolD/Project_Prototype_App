@@ -68,8 +68,8 @@ const ImageCarousel = ({ images }) => {
       <Carousel
         data={images}
         renderItem={renderItem}
-        sliderWidth={300}
-        itemWidth={200}
+        sliderWidth={350}
+        itemWidth={250}
       />
       <Modal
         animationType="slide"
@@ -104,15 +104,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 16,
+    paddingTop: 25,
   },
   carouselItem: {
     backgroundColor: "white",
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "#ccc",
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 250,
     justifyContent: "center",
     alignItems: "center",
   },
