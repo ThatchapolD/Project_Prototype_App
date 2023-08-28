@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
@@ -6,6 +6,7 @@ import { Entypo } from "@expo/vector-icons";
 //Importing Screens
 import Tutorial from "./screens/Tutorial";
 import Uploader_Screen from "./screens/Uploader_Screen";
+import Result from "./screens/Result";
 
 //Importing Style Color
 import { GlobalColor } from "./style/Color";
@@ -27,7 +28,7 @@ export default function App() {
           component={Tutorial}
           options={{
             tabBarIcon: ({ size, color }) => (
-              <Entypo name="text-document" size={size} color={color} />
+              <Entypo name="info-with-circle" size={size} color={color} />
             ),
           }}
         />
@@ -37,6 +38,15 @@ export default function App() {
           options={{
             tabBarIcon: ({ size, color }) => (
               <Entypo name="upload" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Result"
+          component={Result}
+          options={{
+            tabBarIcon: ({ size, color }) => (
+              <Entypo name="layers" size={size} color={color} />
             ),
           }}
         />
