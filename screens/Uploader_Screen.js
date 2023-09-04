@@ -13,6 +13,9 @@ import MainButton from "../UI/MainButton";
 //Importing Style Color
 import { GlobalColor } from "../style/Color";
 
+//import Config
+import Config from "../assets/Config";
+
 function Uploader_Screen() {
   const handleUpload = async (imageData) => {
     try {
@@ -21,7 +24,7 @@ function Uploader_Screen() {
 
       // Send the base64 image data to the server
       const response = await axios.post(
-        "http://localhost:1880/uploadimage",
+        "http://" + Config.Node_RED_IP + Config.Upload, //Change the IP in Config file
         { image: base64Image },
         {
           headers: {
