@@ -24,15 +24,15 @@ const Result = () => {
   return (
     <View style={styles.container}>
       <Card>
-        <Text style={styles.text}>Information of your Banknotes</Text>
+        <Text style={styles.text}>ข้อมูลเกี่ยวกับธนาบัตรของท่าน</Text>
       </Card>
       <ImageCarousel images={images} />
       <Banknotes_Info
         Series={"11"}
-        Date={"11 Nov 2077"}
-        Signature={"Johnny Silverhand"}
-        Serial_Number={"6969"}
-        Amount={"1M"}
+        Date={"11 ก.ค. 2518"}
+        Signature={"บุญชู โรจนเสถียร - เสนาะ อูนากุล"}
+        Serial_Number={"00K 047919"}
+        Amount={"9,125,000 ฉบับ"}
       />
     </View>
   );

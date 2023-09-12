@@ -11,11 +11,11 @@ const Banknotes_Info = ({ Series, Date, Signature, Serial_Number, Amount }) => {
   return (
     <View style={styles.container}>
       <Card>
-        <Text style={styles.text}>Series: {Series} </Text>
-        <Text style={styles.text}>Issue Date: {Date}</Text>
-        <Text style={styles.text}>Signature: {Signature}</Text>
-        <Text style={styles.text}>Serial_Number: {Serial_Number}</Text>
-        <Text style={styles.text}>Amount: {Amount}</Text>
+        <Text style={styles.text}>ธนบัตรรุ่นที่: {Series} </Text>
+        <Text style={styles.text}>ประกาศใช้: {Date}</Text>
+        <Text style={styles.text}>ลายเซ็น: {Signature}</Text>
+        <Text style={styles.text}>เลขหมวด: {Serial_Number}</Text>
+        <Text style={styles.text}>จำนวนที่พิมพ์: {Amount}</Text>
       </Card>
     </View>
   );
