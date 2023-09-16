@@ -1,6 +1,5 @@
 import { StyleSheet, View } from "react-native";
 import React, { useEffect } from "react";
-import axios from "axios";
 
 //Importing Image Uploader and Selector
 import { selectImage } from "../components/Image_Handler/Image_Selector";
@@ -8,8 +7,6 @@ import { uploadImage } from "../components/Image_Handler/Image_Uploader";
 
 //Import Redux slicer
 import { useSelector, useDispatch } from "react-redux";
-import { selecting } from "../redux/slicers/imageSlice";
-import { updating } from "../redux/slicers/uploadStateSlice";
 
 //Import Icon component
 import { FontAwesome } from "@expo/vector-icons";
@@ -19,9 +16,6 @@ import MainButton from "../UI/MainButton";
 
 //Importing Style Color
 import { GlobalColor } from "../style/Color";
-
-//import Config
-import Config from "../assets/Config";
 
 function Uploader_Screen() {
   const imageUri = useSelector((state) => state.imageSelector.imageUri);
