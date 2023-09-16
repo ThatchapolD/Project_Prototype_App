@@ -36,7 +36,7 @@ function Uploader_Screen() {
 
       try {
         const response = await axios.post(
-          "http://" + Config.Mac_IP + Config.Port + Config.Upload,
+          `http://${Config.Mac_IP}:${Config.Port}${Config.Upload}`,
           formData,
           {
             headers: {
