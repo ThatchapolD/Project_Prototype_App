@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as ImagePicker from "expo-image-picker";
 
+//Import Redux slicer
+import { useSelector, useDispatch } from "react-redux";
+import { selecting } from "../redux/slicers/imageSlice";
+
 //Import Icon component
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -16,20 +20,21 @@ import { GlobalColor } from "../style/Color";
 import Config from "../assets/Config";
 
 function Uploader_Screen() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const imageUri = useSelector((state) => state.imageSelector.imageUri);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (selectedImage) {
-      console.log("Selected image:", selectedImage);
-      uploadImage(selectedImage);
+    if (imageUri != null) {
+      console.log("Selected image:", imageUri);
+      uploadImage();
     }
-  }, [selectedImage]);
+  }, [imageUri]);
 
   const uploadImage = async () => {
-    if (selectedImage) {
+    if (imageUri) {
       const formData = new FormData();
       formData.append("image", {
-        uri: selectedImage,
+        uri: imageUri,
         name: "image.jpg",
         type: "image/jpg",
       });
@@ -79,7 +84,7 @@ function Uploader_Screen() {
 
       const selectedImageUri = assets[0].uri;
       if (selectedImageUri) {
-        setSelectedImage(selectedImageUri);
+        dispatch(selecting(selectedImageUri));
       } else {
         console.warn("No valid image URI found.");
       }
