@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const uploadStateSlice = createSlice({
   name: "uploadState",
   initialState: {
-    status: null,
+    status: 0,
   },
   reducers: {
     updating: (state, action) => {

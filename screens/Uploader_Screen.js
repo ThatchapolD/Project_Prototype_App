@@ -1,11 +1,15 @@
 import { StyleSheet, View } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
-import * as ImagePicker from "expo-image-picker";
+
+//Importing Image Uploader and Selector
+import { selectImage } from "../components/Image_Handler/Image_Selector";
+import { uploadImage } from "../components/Image_Handler/Image_Uploader";
 
 //Import Redux slicer
 import { useSelector, useDispatch } from "react-redux";
 import { selecting } from "../redux/slicers/imageSlice";
+import { updating } from "../redux/slicers/uploadStateSlice";
 
 //Import Icon component
 import { FontAwesome } from "@expo/vector-icons";
@@ -21,82 +25,28 @@ import Config from "../assets/Config";
 
 function Uploader_Screen() {
   const imageUri = useSelector((state) => state.imageSelector.imageUri);
+  const uploadStatus = useSelector((state) => state.uploadState.status);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (imageUri != null) {
-      console.log("Selected image:", imageUri);
-      uploadImage();
-    }
+      // console.log("Selected image:", imageUri);
+      handleImageUpload();
+    } else console.log("Error there is no selected image");
   }, [imageUri]);
 
-  const uploadImage = async () => {
-    if (imageUri) {
-      const formData = new FormData();
-      formData.append("image", {
-        uri: imageUri,
-        name: "image.jpg",
-        type: "image/jpg",
-      });
-
-      try {
-        const response = await axios.post(
-          `http://${Config.Mac_IP}:${Config.Port}${Config.Upload}`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          },
-        );
-
-        console.log("Image uploaded successfully:", response.data);
-      } catch (error) {
-        console.error("Error uploading image:", error);
-      }
-    } else {
-      console.warn("No image selected.");
-    }
+  const handleImageSelect = () => {
+    selectImage(dispatch);
   };
 
-  const selectImage = async () => {
-    try {
-      const { status } =
-        await ImagePicker.requestMediaLibraryPermissionsAsync();
-      console.log("Permission status:", status);
-
-      if (status !== "granted") {
-        console.warn("Permission to access image library is not granted.");
-        return;
-      }
-
-      const { assets } = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
-      });
-
-      if (assets.length === 0) {
-        console.warn("No image selected.");
-        return;
-      }
-
-      const selectedImageUri = assets[0].uri;
-      if (selectedImageUri) {
-        dispatch(selecting(selectedImageUri));
-      } else {
-        console.warn("No valid image URI found.");
-      }
-    } catch (error) {
-      console.error("Error while picking image:", error);
-    }
+  const handleImageUpload = () => {
+    uploadImage(imageUri, dispatch);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
-        <MainButton onPressed={selectImage}>
+        <MainButton onPressed={handleImageSelect}>
           Please upload 1 picture
           <View style={styles.pictureContainer}>
             <FontAwesome name="file-picture-o" size={24} color="black" />
