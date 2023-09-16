@@ -19,7 +19,6 @@ import { GlobalColor } from "../style/Color";
 
 function Uploader_Screen() {
   const imageUri = useSelector((state) => state.imageSelector.imageUri);
-  const uploadStatus = useSelector((state) => state.uploadState.status);
   const dispatch = useDispatch();
 
   useEffect(() => {

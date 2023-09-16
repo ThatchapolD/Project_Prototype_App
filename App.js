@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 //Importing Screens
 import Tutorial from "./screens/Tutorial";
 import Uploader_Screen from "./screens/Uploader_Screen";
+import Template_Result from "./screens/Template_Result";
 import Result from "./screens/Result";
 
 //Importing Style Color

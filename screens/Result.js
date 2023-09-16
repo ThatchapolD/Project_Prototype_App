@@ -1,39 +1,28 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-//Importing Components
-import ImageCarousel from "../components/Image_Carousel";
-import Banknotes_Info from "../components/Banknotes_Info";
+//Import Redux slicer
+import { useSelector, useDispatch } from "react-redux";
 
 //Importing Style Color
 import { GlobalColor } from "../style/Color";
 
 //Importing UI
 import Card from "../UI/Card";
+import Template_Result from "./Template_Result";
 
 const Result = () => {
-  const images = [
-    require("../assets/Banknotes/1.png"),
-    require("../assets/Banknotes/2.png"),
-    require("../assets/Banknotes/3.png"),
-    require("../assets/Banknotes/4.png"),
-    require("../assets/Banknotes/5.png"),
-    require("../assets/Banknotes/6.png"),
-  ];
+  const uploadStatus = useSelector((state) => state.uploadState.status);
+
+  if (uploadStatus === 2) {
+    return <Template_Result />;
+  }
 
   return (
     <View style={styles.container}>
       <Card>
-        <Text style={styles.text}>ข้อมูลเกี่ยวกับธนาบัตรของท่าน</Text>
+        <Text style={styles.text}>ท่านยังไม่ได้ทำการอัปโหลดรูป</Text>
       </Card>
-      <ImageCarousel images={images} />
-      <Banknotes_Info
-        Series={"11"}
-        Date={"11 ก.ค. 2518"}
-        Signature={"บุญชู โรจนเสถียร - เสนาะ อูนากุล"}
-        Serial_Number={"00K 047919"}
-        Amount={"9,125,000 ฉบับ"}
-      />
     </View>
   );
 };
@@ -44,6 +33,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: GlobalColor.colors.primary10,
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   text: {
