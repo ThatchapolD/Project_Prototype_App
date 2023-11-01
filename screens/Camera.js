@@ -1,6 +1,13 @@
 import { Camera, CameraType } from "expo-camera";
 import { useState } from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
 
 //Import the imageuploader
 import { uploadImage } from "../components/Image_Handler/Image_Uploader";
@@ -44,6 +51,25 @@ function Camera_Screen() {
     uploadImage(imageUri, dispatch);
   };
 
+  const handleReopenCamera = () => {
+    setImageUri(null);
+  };
+
+  if (imageUri) {
+    return (
+      //   <View>
+      //     <Text>Picture is taken!!!</Text>
+      //   </View>
+      <View style={{ flex: 1 }}>
+        <Image source={{ uri: imageUri }} style={{ flex: 1 }} />
+        <Button
+          onPress={handleReopenCamera}
+          title="Take a picture again"
+        ></Button>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Camera
@@ -55,11 +81,11 @@ function Camera_Screen() {
         }}
       >
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={takeimageHandler}>
-            <Text style={styles.text}>Take a Picture</Text>
-          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={takeimageHandler}
+          ></TouchableOpacity>
         </View>
-        <Button onPress={handleImageUpload} title="Upload"></Button>
       </Camera>
     </View>
   );
@@ -72,20 +98,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
+
   camera: {
     flex: 1,
   },
+
   buttonContainer: {
     flex: 1,
-    flexDirection: "row",
     backgroundColor: "transparent",
-    margin: 64,
-  },
-  button: {
-    flex: 1,
-    alignSelf: "flex-end",
+    justifyContent: "flex-end",
     alignItems: "center",
   },
+
+  button: {
+    width: 60,
+    height: 60,
+    borderRadius: 30, // Makes it a circle
+    backgroundColor: "white",
+    marginBottom: 20,
+  },
+
   text: {
     fontSize: 24,
     fontWeight: "bold",
