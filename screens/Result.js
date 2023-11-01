@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
 //Import Redux slicer
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 //Importing Style Color
 import { GlobalColor } from "../style/Color";
