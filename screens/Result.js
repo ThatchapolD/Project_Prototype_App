@@ -1,3 +1,4 @@
+//Import React Stuff
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
@@ -14,7 +15,7 @@ import Template_Result from "./Template_Result";
 const Result = () => {
   const uploadStatus = useSelector((state) => state.uploadState.status);
 
-  if (uploadStatus === 2) {
+  if (uploadStatus === 1) {
     return <Template_Result />;
   }
 

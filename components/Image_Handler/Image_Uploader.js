@@ -27,7 +27,7 @@ export const uploadImage = async (imageUri, dispatch) => {
         },
       );
 
-      dispatch(updating(2));
+      dispatch(updating(1));
       console.log("Image uploaded successfully:", response.data);
     } catch (error) {
       console.error("Error uploading image:", error);

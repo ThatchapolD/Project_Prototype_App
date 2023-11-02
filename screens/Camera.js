@@ -1,5 +1,5 @@
 import { Camera, CameraType } from "expo-camera";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   StyleSheet,
@@ -8,18 +8,36 @@ import {
   View,
   Image,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
+//Importing UI
+import Card from "../UI/Card";
 
 //Import the imageuploader
 import { uploadImage } from "../components/Image_Handler/Image_Uploader";
 
 //Import Redux slicer
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function Camera_Screen() {
+  //For Navigate
+  const navigation = useNavigation();
+
+  //For Camera and Picture
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [camera, setCamera] = useState(null);
   const [imageUri, setImageUri] = useState(null);
+
+  //Redux stuff
   const dispatch = useDispatch();
+  const uploadStatus = useSelector((state) => state.uploadState.status);
+
+  useEffect(() => {
+    if (uploadStatus === 1) {
+      console.log("Success upload");
+      navigation.navigate("Result");
+    }
+  }, [uploadStatus]);
 
   if (!permission) {
     // Camera permissions are still loading
@@ -41,7 +59,7 @@ function Camera_Screen() {
   async function takeimageHandler() {
     if (!camera) return;
     const photo = await camera.takePictureAsync({
-      quality: 0.5,
+      quality: 1,
     });
     console.log(photo);
     setImageUri(photo.uri);
@@ -62,6 +80,7 @@ function Camera_Screen() {
       //   </View>
       <View style={{ flex: 1 }}>
         <Image source={{ uri: imageUri }} style={{ flex: 1 }} />
+        <Button onPress={handleImageUpload} title="Upload a picture"></Button>
         <Button
           onPress={handleReopenCamera}
           title="Take a picture again"
@@ -79,6 +98,7 @@ function Camera_Screen() {
         ref={(ref) => {
           setCamera(ref);
         }}
+        focusDepth={0.4}
       >
         <View style={styles.buttonContainer}>
           <TouchableOpacity
