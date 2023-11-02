@@ -1,9 +1,12 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, View, Pressable } from "react-native";
 import React from "react";
+
+import { Entypo } from "@expo/vector-icons";
 
 //Import Style Color
 import { GlobalColor } from "../style/Color";
-import TutorialList from "../components/TutorialList";
+import TutorialList from "../components/Tutorial/TutorialListEng";
+import TutorialListThai from "../components/Tutorial/TutorialListThai";
 
 //Import Redux slicer
 import { useDispatch, useSelector } from "react-redux";
@@ -25,9 +28,14 @@ function Tutorial() {
 
   return (
     <View style={styles.container}>
-      <TutorialList />
-      <Button title="Lang" onPress={handleLanguageChange} />
-      <Text style={styles.text}>{language}</Text>
+      <View style={styles.languageBtn}>
+        <Pressable onPress={handleLanguageChange}>
+          <Entypo name="globe" size={36} color={GlobalColor.colors.accent10} />
+        </Pressable>
+      </View>
+      <View style={styles.itemList}>
+        {language === "Eng" ? <TutorialList /> : <TutorialListThai />}
+      </View>
     </View>
   );
 }
@@ -38,11 +46,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: GlobalColor.colors.primary10,
-    alignItems: "center",
-    justifyContent: "center",
   },
+
+  itemList: { flex: 1, alignItems: "center", justifyContent: "center" },
 
   text: {
     color: "white",
   },
+
+  languageBtn: { alignItems: "flex-end", paddingTop: 12, paddingRight: 12 },
 });

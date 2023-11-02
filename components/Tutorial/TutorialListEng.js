@@ -1,24 +1,23 @@
 import { StyleSheet, View, Text } from "react-native";
 
 //Import UI
-import Card from "../UI/Card";
+import Card from "../../UI/Card";
 
 function TutorialList() {
   return (
     <View style={styles.listItem}>
       <Card>
+        <Text style={styles.text}>1. Press Camera page to take a picture</Text>
+      </Card>
+      <Card>
         <Text style={styles.text}>
-          1. Take a picture of Phra by your phone camera
+          2. You can then choose to take a picture again or upload the picture
         </Text>
       </Card>
       <Card>
         <Text style={styles.text}>
-          2. Then press upload button at bottom of your screen
-        </Text>
-      </Card>
-      <Card>
-        <Text style={styles.text}>
-          3. Wait for the result (Don't close the app)
+          3. After you upload the picture the page will take you to result page
+          automatically
         </Text>
       </Card>
       <Card>
