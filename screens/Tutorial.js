@@ -1,5 +1,6 @@
 import { StyleSheet, View, Pressable } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 import { Entypo } from "@expo/vector-icons";
 
@@ -13,6 +14,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectLanguage } from "../redux/slicers/languageSlice";
 
 function Tutorial() {
+  //For Navigate
+  const navigation = useNavigation();
+
   //Redux stuff
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.languageState);
@@ -20,9 +24,11 @@ function Tutorial() {
   const handleLanguageChange = () => {
     console.log(language);
     dispatch(selectLanguage("Eng"));
+    navigation.setOptions({ title: "Tutorial" });
 
     if (language === "Eng") {
       dispatch(selectLanguage("Thai"));
+      navigation.setOptions({ title: "วิธีการใช้งาน" });
     }
   };
 

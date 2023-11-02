@@ -33,6 +33,7 @@ export default function App() {
             name="Tutorial"
             component={Tutorial}
             options={{
+              title: "วิธีการใช้งาน",
               tabBarIcon: ({ size, color }) => (
                 <Entypo name="info-with-circle" size={size} color={color} />
               ),
@@ -42,6 +43,7 @@ export default function App() {
             name="Camera"
             component={Camera_Screen}
             options={{
+              title: "กล้อง",
               tabBarIcon: ({ size, color }) => (
                 <Entypo name="camera" size={size} color={color} />
               ),
@@ -51,6 +53,7 @@ export default function App() {
             name="Result"
             component={Result}
             options={{
+              title: "ผลลัพท์",
               tabBarIcon: ({ size, color }) => (
                 <Entypo name="layers" size={size} color={color} />
               ),

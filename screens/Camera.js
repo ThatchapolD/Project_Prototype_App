@@ -20,6 +20,8 @@ import { uploadImage } from "../components/Image_Handler/Image_Uploader";
 import { useDispatch, useSelector } from "react-redux";
 
 function Camera_Screen() {
+  const language = useSelector((state) => state.language.languageState);
+
   //For Navigate
   const navigation = useNavigation();
 
@@ -72,6 +74,12 @@ function Camera_Screen() {
   const handleReopenCamera = () => {
     setImageUri(null);
   };
+
+  if (language === "Thai") {
+    navigation.setOptions({ title: "กล้อง" });
+  } else {
+    navigation.setOptions({ title: "Camera" });
+  }
 
   if (imageUri) {
     return (
