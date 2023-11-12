@@ -22,7 +22,7 @@ function Tutorial() {
   const language = useSelector((state) => state.language.languageState);
 
   const handleLanguageChange = () => {
-    console.log(language);
+    // console.log(language);
     dispatch(selectLanguage("Eng"));
     navigation.setOptions({ title: "Tutorial" });
 

@@ -18,12 +18,14 @@ export const uploadImage = async (imageUri, dispatch) => {
 
     try {
       const response = await axios.post(
-        `http://${Config.Mac_IP}:${Config.Port}${Config.Upload}`,
+        // `http://${Config.Mac_IP}:${Config.Port}${Config.Upload}`, //Node Js
+        `http://192.168.8.163:500/uploadimage`, //Python Flask
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          timeout: 5000,
         },
       );
 
