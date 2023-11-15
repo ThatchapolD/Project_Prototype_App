@@ -18,7 +18,8 @@ export const uploadImage = async (imageUri, dispatch) => {
 
     try {
       const response = await axios.post(
-        `http://${Config.Mac_IP}:${Config.Port}${Config.Upload}`,
+        // `http://${Config.Mac_IP}:${Config.Port}${Config.Upload}`, //For JS
+        `http://${Config.Mac_IP}:500${Config.Upload}`,
         formData,
         {
           headers: {
