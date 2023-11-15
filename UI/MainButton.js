@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Text, Pressable } from "react-native";
+import { Entypo } from "@expo/vector-icons";
 
 import { GlobalColor } from "../style/Color";
 
-function MainButton({ children, onPressed }) {
+function MainButton({ children, onPressed, iconName, iconSize, iconColor }) {
   return (
     <View style={styles.buttonOuterContainer}>
       <Pressable
@@ -15,7 +16,10 @@ function MainButton({ children, onPressed }) {
         onPress={onPressed}
         android_ripple={{ color: GlobalColor.colors.accent100 }}
       >
-        <Text style={styles.buttonText}>{children}</Text>
+        <Text style={styles.buttonText}>
+          {children}
+          <Entypo name={iconName} size={iconSize} color={iconColor} />
+        </Text>
       </Pressable>
     </View>
   );

@@ -1,17 +1,15 @@
-import { Camera, CameraType } from "expo-camera";
-import { useState, useEffect } from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-} from "react-native";
+import { useEffect } from "react";
+import { Button, StyleSheet, Text, View, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 //Importing UI
-import Card from "../UI/Card";
+import MainButton from "../UI/MainButton";
+
+//Importing Style Color
+import { GlobalColor } from "../style/Color";
+
+//Import Camera lib from expo-image-picker
+import { launchCameraAsync, useCameraPermissions } from "expo-image-picker";
 
 //Import the imageuploader
 import { uploadImage } from "../components/Image_Handler/Image_Uploader";
@@ -28,8 +26,7 @@ function Camera_Screen() {
   const navigation = useNavigation();
 
   //For Camera and Picture
-  const [permission, requestPermission] = Camera.useCameraPermissions();
-  const [camera, setCamera] = useState(null);
+  const [permission, requestPermission] = useCameraPermissions();
 
   //Redux stuff
   const dispatch = useDispatch();
@@ -60,12 +57,12 @@ function Camera_Screen() {
   }
 
   async function takeimageHandler() {
-    if (!camera) return;
-    const photo = await camera.takePictureAsync({
+    const image = await launchCameraAsync({
+      aspect: [16, 9],
       quality: 1,
     });
-    console.log(photo);
-    dispatch(selecting(photo.uri));
+    console.log(image.assets[0].uri);
+    dispatch(selecting(image.assets[0].uri));
   }
 
   const handleImageUpload = () => {
@@ -97,22 +94,16 @@ function Camera_Screen() {
 
   return (
     <View style={styles.container}>
-      <Camera
-        style={styles.camera}
-        type={CameraType.back}
-        autoFocus={1}
-        ref={(ref) => {
-          setCamera(ref);
-        }}
-        focusDepth={0.4}
-      >
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={takeimageHandler}
-          ></TouchableOpacity>
-        </View>
-      </Camera>
+      <View style={styles.mainButtonContainer}>
+        <MainButton
+          onPressed={takeimageHandler}
+          iconName={"camera"}
+          iconSize={27}
+          iconColor={"black"}
+        >
+          {language === "Eng" ? "Take a photo" : "กดเพื่อถ่ายรูป"}
+        </MainButton>
+      </View>
     </View>
   );
 }
@@ -123,6 +114,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    backgroundColor: GlobalColor.colors.primary10,
   },
 
   camera: {
@@ -133,6 +125,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "transparent",
     justifyContent: "flex-end",
+    alignItems: "center",
+  },
+
+  mainButtonContainer: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
   },
 
