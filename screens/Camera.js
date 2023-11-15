@@ -18,9 +18,11 @@ import { uploadImage } from "../components/Image_Handler/Image_Uploader";
 
 //Import Redux slicer
 import { useDispatch, useSelector } from "react-redux";
+import { selecting } from "../redux/slicers/imageSlice";
 
 function Camera_Screen() {
   const language = useSelector((state) => state.language.languageState);
+  const imageUri = useSelector((state) => state.imageStorage.imageUri);
 
   //For Navigate
   const navigation = useNavigation();
@@ -28,7 +30,6 @@ function Camera_Screen() {
   //For Camera and Picture
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [camera, setCamera] = useState(null);
-  const [imageUri, setImageUri] = useState(null);
 
   //Redux stuff
   const dispatch = useDispatch();
@@ -64,7 +65,7 @@ function Camera_Screen() {
       quality: 1,
     });
     console.log(photo);
-    setImageUri(photo.uri);
+    dispatch(selecting(photo.uri));
   }
 
   const handleImageUpload = () => {
@@ -72,7 +73,7 @@ function Camera_Screen() {
   };
 
   const handleReopenCamera = () => {
-    setImageUri(null);
+    dispatch(selecting(null));
   };
 
   if (language === "Thai") {
@@ -83,9 +84,6 @@ function Camera_Screen() {
 
   if (imageUri) {
     return (
-      //   <View>
-      //     <Text>Picture is taken!!!</Text>
-      //   </View>
       <View style={{ flex: 1 }}>
         <Image source={{ uri: imageUri }} style={{ flex: 1 }} />
         <Button onPress={handleImageUpload} title="Upload a picture"></Button>

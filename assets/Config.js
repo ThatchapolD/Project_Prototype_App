@@ -4,6 +4,9 @@ const Config = {
 
   Node_RED_IP: "192.168.8.163:1880",
   Upload: "/uploadimage",
+
+  //For Flask
+  Port_Flask: "500",
 };
 
 export default Config;
