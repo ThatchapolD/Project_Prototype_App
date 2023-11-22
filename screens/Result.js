@@ -13,9 +13,16 @@ import Template_Result from "./Template_Result";
 
 const Result = () => {
   const uploadStatus = useSelector((state) => state.uploadState.status);
+  const bankNoteID = useSelector((state) => state.banknotesID.bankID);
 
   if (uploadStatus === 2) {
-    return <Template_Result />;
+    return (
+      <View style={styles.container}>
+        <Card>
+          <Text style={styles.text}>Your banknotes is: {bankNoteID}</Text>
+        </Card>
+      </View>
+    );
   }
 
   return (

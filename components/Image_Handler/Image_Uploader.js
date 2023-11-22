@@ -7,6 +7,9 @@ import Config from "../../assets/Config";
 //import function from uploadStateSlice
 import { updating } from "../../redux/slicers/uploadStateSlice";
 
+//import function from bankIDSlice
+import { resultID } from "../../redux/slicers/bankIDSlice";
+
 export const uploadImage = async (imageUri, dispatch) => {
   if (imageUri) {
     const formData = new FormData();
@@ -31,6 +34,7 @@ export const uploadImage = async (imageUri, dispatch) => {
 
       dispatch(updating(2));
       console.log("Image uploaded successfully:", response.data);
+      dispatch(resultID(response.data.Message));
     } catch (error) {
       console.error("Error uploading image:", error);
     }

@@ -1,5 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import React, { useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 //Importing Image Uploader and Selector
 import { selectImage } from "../components/Image_Handler/Image_Selector";
@@ -18,15 +19,25 @@ import MainButton from "../UI/MainButton";
 import { GlobalColor } from "../style/Color";
 
 function Uploader_Screen() {
+  //Redux
   const imageUri = useSelector((state) => state.imageSelector.imageUri);
+  const uploadStatus = useSelector((state) => state.uploadState.status);
   const dispatch = useDispatch();
+
+  //For Navigate
+  const navigation = useNavigation();
 
   useEffect(() => {
     if (imageUri != null) {
       // console.log("Selected image:", imageUri);
       handleImageUpload();
     } else console.log("Error there is no selected image");
-  }, [imageUri]);
+
+    if (uploadStatus === 2) {
+      console.log("Success upload");
+      navigation.navigate("Result");
+    }
+  }, [uploadStatus]);
 
   const handleImageSelect = () => {
     selectImage(dispatch);
