@@ -17,6 +17,7 @@ import { uploadImage } from "../components/Image_Handler/Image_Uploader";
 //Import Redux slicer
 import { useDispatch, useSelector } from "react-redux";
 import { selecting } from "../redux/slicers/imageSlice";
+import { updating } from "../redux/slicers/uploadStateSlice";
 
 function Camera_Screen() {
   const language = useSelector((state) => state.language.languageState);
@@ -60,6 +61,7 @@ function Camera_Screen() {
     const image = await launchCameraAsync({
       aspect: [16, 9],
       quality: 1,
+      allowsEditing: true,
     });
     console.log(image.assets[0].uri);
     dispatch(selecting(image.assets[0].uri));

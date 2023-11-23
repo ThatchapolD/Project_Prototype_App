@@ -1,5 +1,5 @@
 //Import React Stuff
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
@@ -16,10 +16,15 @@ import Template_Result from "./Template_Result";
 const Result = () => {
   const uploadStatus = useSelector((state) => state.uploadState.status);
   const language = useSelector((state) => state.language.languageState);
-  const BanknoteID = useSelector((state) => state.banknoteInfo.resultID);
-  const Serial_Number = useSelector((state) => state.banknoteInfo.resultNum);
-  const MF_Sig = useSelector((state) => state.banknoteInfo.resultMFSig);
-  const BOT_Sig = useSelector((state) => state.banknoteInfo.resultBOTSig);
+  const imageUri = useSelector((state) => state.imageStorage.imageUri);
+  const BanknoteID = useSelector(
+    (state) => state.banknoteResultStorage.banknoteID,
+  );
+  const Serial_Number = useSelector(
+    (state) => state.banknoteResultStorage.Serial_Number,
+  );
+  const MF_Sig = useSelector((state) => state.banknoteResultStorage.MF_Sig);
+  const BOT_Sig = useSelector((state) => state.banknoteResultStorage.BOT_Sig);
 
   const navigation = useNavigation();
 
@@ -27,7 +32,18 @@ const Result = () => {
     return (
       <View style={styles.container}>
         <Card>
-          <Text>Your Banknote ID is {BanknoteID}</Text>
+          <Image
+            source={{ uri: imageUri }}
+            style={{ width: 300, height: 300 }}
+          />
+        </Card>
+        <Card>
+          <Text style={styles.text}>Your Banknote ID is: {BanknoteID}</Text>
+          <Text style={styles.text}>
+            Your Serial_Number is: {Serial_Number}
+          </Text>
+          <Text style={styles.text}>Your MF_Sig is: {MF_Sig}</Text>
+          <Text style={styles.text}>Your BOT_Sig is: {BOT_Sig}</Text>
         </Card>
       </View>
     );
