@@ -16,11 +16,21 @@ import Template_Result from "./Template_Result";
 const Result = () => {
   const uploadStatus = useSelector((state) => state.uploadState.status);
   const language = useSelector((state) => state.language.languageState);
+  const BanknoteID = useSelector((state) => state.banknoteInfo.resultID);
+  const Serial_Number = useSelector((state) => state.banknoteInfo.resultNum);
+  const MF_Sig = useSelector((state) => state.banknoteInfo.resultMFSig);
+  const BOT_Sig = useSelector((state) => state.banknoteInfo.resultBOTSig);
 
   const navigation = useNavigation();
 
   if (uploadStatus === 1) {
-    return <Template_Result />;
+    return (
+      <View style={styles.container}>
+        <Card>
+          <Text>Your Banknote ID is {BanknoteID}</Text>
+        </Card>
+      </View>
+    );
   }
 
   if (language === "Thai") {

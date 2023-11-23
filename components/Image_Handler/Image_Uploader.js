@@ -7,6 +7,13 @@ import Config from "../../assets/Config";
 //import function from uploadStateSlice
 import { updating } from "../../redux/slicers/uploadStateSlice";
 
+import {
+  resultID,
+  resultNum,
+  resultMFSig,
+  resultBOTSig,
+} from "../../redux/slicers/banknoteResult";
+
 export const uploadImage = async (imageUri, dispatch) => {
   if (imageUri) {
     const formData = new FormData();
@@ -30,8 +37,12 @@ export const uploadImage = async (imageUri, dispatch) => {
         },
       );
 
-      dispatch(updating(1));
       console.log("Image uploaded successfully:", response.data);
+      dispatch(resultID(response.data[0].BanknoteID));
+      dispatch(resultNum(response.data[1].Serial_Number));
+      dispatch(resultMFSig(response.data[2].MF_Sig));
+      dispatch(resultBOTSig(response.data[3].BOT_Sig));
+      dispatch(updating(1));
     } catch (error) {
       console.error("Error uploading image:", error);
     }
