@@ -1,5 +1,5 @@
 //Import React Stuff
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, ActivityIndicator } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
@@ -47,10 +47,20 @@ const Result = () => {
         </Card>
       </View>
     );
-  } else {
+  } else if (uploadStatus === 1) {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Waiting...</Text>
+        <Card>
+          <View>
+            <Text style={styles.text}>
+              Waiting...
+              <ActivityIndicator
+                size="large"
+                color={GlobalColor.colors.accent100}
+              />
+            </Text>
+          </View>
+        </Card>
       </View>
     );
   }
