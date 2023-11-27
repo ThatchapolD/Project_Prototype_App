@@ -28,7 +28,7 @@ const Result = () => {
 
   const navigation = useNavigation();
 
-  if (uploadStatus === 1) {
+  if (uploadStatus === 2) {
     return (
       <View style={styles.container}>
         <Card>
@@ -45,6 +45,12 @@ const Result = () => {
           <Text style={styles.text}>Your MF_Sig is: {MF_Sig}</Text>
           <Text style={styles.text}>Your BOT_Sig is: {BOT_Sig}</Text>
         </Card>
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>Waiting...</Text>
       </View>
     );
   }

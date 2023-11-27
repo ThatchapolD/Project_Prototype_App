@@ -27,7 +27,8 @@ export const uploadImage = async (imageUri, dispatch) => {
       const response = await axios.post(
         // `http://${Config.Mac_IP}:${Config.Port}${Config.Upload}`, //Node Js
         // `http://192.168.8.163:500/uploadimage`, //Python Flask
-        `http://${Config.Mac_IP}:${Config.Port_Flask}${Config.Upload}`,
+        // `http://${Config.Mac_IP}:${Config.Port_Flask}${Config.Upload}`,
+        `http://172.20.10.2:500${Config.Upload}`,
         formData,
         {
           headers: {
@@ -42,7 +43,7 @@ export const uploadImage = async (imageUri, dispatch) => {
       dispatch(resultNum(response.data[1].Serial_Number));
       dispatch(resultMFSig(response.data[2].MF_Sig));
       dispatch(resultBOTSig(response.data[3].BOT_Sig));
-      dispatch(updating(1));
+      dispatch(updating(2));
     } catch (error) {
       console.error("Error uploading image:", error);
     }
