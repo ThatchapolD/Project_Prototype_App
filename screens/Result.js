@@ -53,7 +53,7 @@ const Result = () => {
         <Card>
           <View>
             <Text style={styles.text}>
-              Waiting...
+              {language === "Eng" ? "Waiting..." : "โปรดรอสักครู่"}
               <ActivityIndicator
                 size="large"
                 color={GlobalColor.colors.accent100}
