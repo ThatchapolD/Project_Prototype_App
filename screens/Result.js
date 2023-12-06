@@ -1,6 +1,6 @@
 //Import React Stuff
 import { View, Text, StyleSheet, Image, ActivityIndicator } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 //Import Redux slicer
@@ -9,9 +9,13 @@ import { useSelector } from "react-redux";
 //Importing Style Color
 import { GlobalColor } from "../style/Color";
 
+//Importing BN Info components
+import Banknotes_Info from "../components/Banknotes_Info";
+
 //Importing UI
 import Card from "../UI/Card";
-import Template_Result from "./Template_Result";
+
+import Cir_DB from "../assets/Banknotes_DB/Circulated_DB";
 
 const Result = () => {
   const uploadStatus = useSelector((state) => state.uploadState.status);
@@ -30,21 +34,30 @@ const Result = () => {
 
   if (uploadStatus === 2) {
     return (
-      <View style={styles.container}>
+      <View style={styles.Banknotes_Info_Container}>
         <Card>
           <Image
-            source={{ uri: imageUri }}
+            source={{
+              uri: imageUri,
+            }}
             style={{ width: 300, height: 300 }}
           />
         </Card>
-        <Card>
-          <Text style={styles.text}>Your Banknote ID is: {BanknoteID}</Text>
-          <Text style={styles.text}>
-            Your Serial_Number is: {Serial_Number}
-          </Text>
-          <Text style={styles.text}>Your MF_Sig is: {MF_Sig}</Text>
-          <Text style={styles.text}>Your BOT_Sig is: {BOT_Sig}</Text>
-        </Card>
+        {BanknoteID === "Can't detect Banknotes" ? (
+          <Card>
+            <Text style={styles.text}>Can't Detect Banknotes </Text>
+          </Card>
+        ) : (
+          <Banknotes_Info
+            Series={Cir_DB[BanknoteID].Series}
+            Date={Cir_DB[BanknoteID].Date}
+            MF_Sig={MF_Sig}
+            BOT_Sig={BOT_Sig}
+            Serial_Number={Serial_Number}
+            Amount={Cir_DB[BanknoteID].Amount}
+            Price={Cir_DB[BanknoteID].Price}
+          />
+        )}
       </View>
     );
   } else if (uploadStatus === 1) {
@@ -92,6 +105,11 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalColor.colors.primary10,
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  Banknotes_Info_Container: {
+    flex: 1,
+    backgroundColor: GlobalColor.colors.primary10,
   },
 
   text: {

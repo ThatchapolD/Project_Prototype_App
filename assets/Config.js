@@ -6,7 +6,8 @@ const Config = {
   Upload: "/uploadimage",
 
   //For Flask
-  Port_Flask: "500",
+  Ubuntu_Server: "ubuntuserver.td1932prv.net",
+  Port_Flask: "6000",
 };
 
 export default Config;

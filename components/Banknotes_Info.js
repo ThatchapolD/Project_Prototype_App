@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React from "react";
 
 //Importing Style Color
@@ -7,15 +7,27 @@ import { GlobalColor } from "../style/Color";
 //Importing UI
 import Card from "../UI/Card";
 
-const Banknotes_Info = ({ Series, Date, Signature, Serial_Number, Amount }) => {
+const Banknotes_Info = ({
+  Series,
+  Date,
+  MF_Sig,
+  BOT_Sig,
+  Serial_Number,
+  Amount,
+  Price,
+}) => {
   return (
     <View style={styles.container}>
       <Card>
-        <Text style={styles.text}>ธนบัตรรุ่นที่: {Series} </Text>
-        <Text style={styles.text}>ประกาศใช้: {Date}</Text>
-        <Text style={styles.text}>ลายเซ็น: {Signature}</Text>
-        <Text style={styles.text}>เลขหมวด: {Serial_Number}</Text>
-        <Text style={styles.text}>จำนวนที่พิมพ์: {Amount}</Text>
+        <ScrollView>
+          <Text style={styles.text}>ธนบัตรรุ่นที่: {Series} </Text>
+          <Text style={styles.text}>ประกาศใช้: {Date}</Text>
+          <Text style={styles.text}>รัฐมนตรีกระทรวงการคลัง: {MF_Sig}</Text>
+          <Text style={styles.text}>ผู้ว่าการแบงค์ชาติ: {BOT_Sig}</Text>
+          <Text style={styles.text}>เลขหมวด: {Serial_Number}</Text>
+          <Text style={styles.text}>จำนวนที่พิมพ์: {Amount}</Text>
+          <Text style={styles.text}>ราคาโดยประมาณ: {Price}</Text>
+        </ScrollView>
       </Card>
     </View>
   );
@@ -32,7 +44,7 @@ const styles = StyleSheet.create({
 
   text: {
     color: "white",
-    fontSize: 16,
-    padding: 10,
+    fontSize: 17,
+    padding: 8,
   },
 });

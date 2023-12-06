@@ -26,15 +26,15 @@ export const uploadImage = async (imageUri, dispatch) => {
     try {
       const response = await axios.post(
         // `http://${Config.Mac_IP}:${Config.Port}${Config.Upload}`, //Node Js
-        // `http://192.168.8.163:500/uploadimage`, //Python Flask
-        // `http://${Config.Mac_IP}:${Config.Port_Flask}${Config.Upload}`,
-        `http://172.20.10.2:500${Config.Upload}`,
+        // `http://${Config.Mac_IP}:${Config.Port_Flask}${Config.Upload}`,  //Python Flask
+        // `http://172.20.10.2:500${Config.Upload}`, //Hotspot
+        `http://${Config.Ubuntu_Server}:${Config.Port_Flask}${Config.Upload}`, //Raspberry Pi server
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-          timeout: 5000,
+          // timeout: 10000,
         },
       );
 
@@ -45,6 +45,11 @@ export const uploadImage = async (imageUri, dispatch) => {
       dispatch(resultBOTSig(response.data[3].BOT_Sig));
       dispatch(updating(2));
     } catch (error) {
+      // dispatch(resultID("Can't Detect banknotes"));
+      // dispatch(resultNum("Can't Detect banknotes"));
+      // dispatch(resultMFSig("Can't Detect banknotes"));
+      // dispatch(resultBOTSig("Can't Detect banknotes"));
+      // dispatch(updating(2));
       console.error("Error uploading image:", error);
     }
   } else {
