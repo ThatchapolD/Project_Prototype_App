@@ -1,6 +1,6 @@
 //Import React Stuff
 import { View, Text, StyleSheet, Image, ActivityIndicator } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 //Import Redux slicer
@@ -31,6 +31,14 @@ const Result = () => {
   const BOT_Sig = useSelector((state) => state.banknoteResultStorage.BOT_Sig);
 
   const navigation = useNavigation();
+
+  useEffect(() => {
+    if (language === "Thai") {
+      navigation.setOptions({ title: "ผลลัพท์" });
+    } else {
+      navigation.setOptions({ title: "Result" });
+    }
+  }, [language]);
 
   if (uploadStatus === 2) {
     return (
@@ -77,12 +85,6 @@ const Result = () => {
         </Card>
       </View>
     );
-  }
-
-  if (language === "Thai") {
-    navigation.setOptions({ title: "ผลลัพท์" });
-  } else {
-    navigation.setOptions({ title: "Result" });
   }
 
   return (

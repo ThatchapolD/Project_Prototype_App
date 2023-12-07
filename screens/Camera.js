@@ -34,11 +34,19 @@ function Camera_Screen() {
   const [permission, requestPermission] = useCameraPermissions();
 
   useEffect(() => {
+    //For language changing
+    if (language === "Thai") {
+      navigation.setOptions({ title: "กล้อง" });
+    } else {
+      navigation.setOptions({ title: "Camera" });
+    }
+
+    //Change the page to Reuslt after uploading
     if (uploadStatus === 1) {
       console.log("Waiting for result");
       navigation.navigate("Result");
     }
-  }, [uploadStatus]);
+  }, [uploadStatus, language]);
 
   if (!permission) {
     // Camera permissions are still loading
@@ -76,12 +84,6 @@ function Camera_Screen() {
     dispatch(selecting(null));
   };
 
-  if (language === "Thai") {
-    navigation.setOptions({ title: "กล้อง" });
-  } else {
-    navigation.setOptions({ title: "Camera" });
-  }
-
   if (imageUri) {
     return (
       <View style={styles.container}>
@@ -92,18 +94,6 @@ function Camera_Screen() {
             style={{ width: 300, height: 300 }}
           />
         </Card>
-        {/* <View style={styles.buttonContainer}>
-          <MainButton onPressed={handleImageUpload}>
-            {language === "Eng" ? "Upload a picture" : "กดเพื่อทำการอัปโหลดรูป"}
-          </MainButton>
-        </View>
-        <View style={styles.buttonContainer}>
-          <MainButton onPressed={handleReopenCamera}>
-            {language === "Eng"
-              ? "Take a picture again"
-              : "กดเพื่่อทำการถ่ายรูปใหม่"}
-          </MainButton>
-        </View> */}
         <View style={{ padding: 10 }}>
           <Button
             onPress={handleImageUpload}

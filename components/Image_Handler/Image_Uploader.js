@@ -28,7 +28,7 @@ export const uploadImage = async (imageUri, dispatch) => {
         // `http://${Config.Mac_IP}:${Config.Port}${Config.Upload}`, //Node Js
         // `http://${Config.Mac_IP}:${Config.Port_Flask}${Config.Upload}`,  //Python Flask
         // `http://172.20.10.2:500${Config.Upload}`, //Hotspot
-        `http://${Config.Ubuntu_Server}:${Config.Port_Flask}${Config.Upload}`, //Raspberry Pi server
+        `http://${Config.Ubuntu_Server}:${Config.Port_Flask}${Config.Upload}`, //Ubuntu server
         formData,
         {
           headers: {
