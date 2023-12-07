@@ -1,6 +1,9 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React from "react";
 
+//Import Redux slicer
+import { useSelector } from "react-redux";
+
 //Importing Style Color
 import { GlobalColor } from "../style/Color";
 
@@ -17,22 +20,45 @@ const Banknotes_Info = ({
   Price,
   Aritistic,
 }) => {
+  const language = useSelector((state) => state.language.languageState);
   return (
     <View style={styles.container}>
       <Card>
         <ScrollView>
-          <Text style={styles.text}>ธนบัตรรุ่นที่: {Series} </Text>
-          <Text style={styles.text}>ประกาศใช้: {Date}</Text>
-          <Text style={styles.text}>รัฐมนตรีกระทรวงการคลัง: {MF_Sig}</Text>
-          <Text style={styles.text}>ผู้ว่าการแบงค์ชาติ: {BOT_Sig}</Text>
-          <Text style={styles.text}>เลขหมวด: {Serial_Number}</Text>
-          <Text style={styles.text}>จำนวนที่พิมพ์: {Amount}</Text>
-          <Text style={styles.text}>ราคาโดยประมาณ: {Price}</Text>
-          <Text style={styles.text}>ลักษณะ: {Aritistic}</Text>
-          <Text style={styles.text}>
-            หมายเหตุ: ราคาจะขึ้นอยู่กับลายเซ็น, เลขหมวดและสภาพของแบงค์
-            ราคาที่กล่าวมาข้างต้นคือราคาประเมิณแบบคร่าวๆ
-          </Text>
+          {language === "Thai" ? (
+            <>
+              <Text style={styles.text}>ธนบัตรรุ่นที่: {Series} </Text>
+              <Text style={styles.text}>ประกาศใช้: {Date}</Text>
+              <Text style={styles.text}>รัฐมนตรีกระทรวงการคลัง: {MF_Sig}</Text>
+              <Text style={styles.text}>ผู้ว่าการแบงค์ชาติ: {BOT_Sig}</Text>
+              <Text style={styles.text}>เลขหมวด: {Serial_Number}</Text>
+              <Text style={styles.text}>จำนวนที่พิมพ์: {Amount}</Text>
+              <Text style={styles.text}>ราคาโดยประมาณ: {Price}</Text>
+              <Text style={styles.text}>ลักษณะ: {Aritistic}</Text>
+              <Text style={styles.text}>
+                หมายเหตุ: ราคาจะขึ้นอยู่กับลายเซ็น, เลขหมวดและสภาพของแบงค์
+                ราคาที่กล่าวมาข้างต้นคือราคาประเมิณแบบคร่าวๆ
+              </Text>
+            </>
+          ) : (
+            <>
+              <Text style={styles.text}>BanknoteSeries: {Series} </Text>
+              <Text style={styles.text}>Declare Date: {Date}</Text>
+              <Text style={styles.text}>Minister of Finance: {MF_Sig}</Text>
+              <Text style={styles.text}>
+                Governor of the bank of Thailand: {BOT_Sig}
+              </Text>
+              <Text style={styles.text}>Serial Number: {Serial_Number}</Text>
+              <Text style={styles.text}>Printed Amount: {Amount}</Text>
+              <Text style={styles.text}>Approximate Price: {Price}</Text>
+              <Text style={styles.text}>Artistic Feature: {Aritistic}</Text>
+              <Text style={styles.text}>
+                Remarks: The price of a banknotes is varied by Signature, Serial
+                number and conditions of banknotes. The price that is show on
+                the app is just the approximate price of the banknotes.
+              </Text>
+            </>
+          )}
         </ScrollView>
       </Card>
     </View>

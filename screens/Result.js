@@ -15,7 +15,9 @@ import Banknotes_Info from "../components/Banknotes_Info";
 //Importing UI
 import Card from "../UI/Card";
 
-import Cir_DB from "../assets/Banknotes_DB/Circulated_DB";
+//Importing Banknotes DB
+import Thai_Cir_DB from "../assets/Banknotes_DB/Thai_DB/TH_Circulated_DB";
+import Eng_Cir_DB from "../assets/Banknotes_DB/Eng_DB/ENG_Circulated_DB";
 
 const Result = () => {
   const uploadStatus = useSelector((state) => state.uploadState.status);
@@ -53,18 +55,42 @@ const Result = () => {
         </Card>
         {BanknoteID === "Can't detect Banknotes" ? (
           <Card>
-            <Text style={styles.text}>Can't Detect Banknotes </Text>
+            <Text style={styles.text}>
+              {language === "Thai"
+                ? "ไม่พบเจอธันบัตร"
+                : "Can't Detect Banknotes"}
+            </Text>
           </Card>
         ) : (
           <Banknotes_Info
-            Series={Cir_DB[BanknoteID].Series}
-            Date={Cir_DB[BanknoteID].Date}
-            MF_Sig={MF_Sig}
-            BOT_Sig={BOT_Sig}
+            Series={
+              language === "Thai"
+                ? Thai_Cir_DB[BanknoteID].Series
+                : Eng_Cir_DB[BanknoteID].Series
+            }
+            Date={
+              language === "Thai"
+                ? Thai_Cir_DB[BanknoteID].Date
+                : Eng_Cir_DB[BanknoteID].Date
+            }
+            MF_Sig={language === "Thai" ? MF_Sig : MF_Sig}
+            BOT_Sig={language === "Thai" ? BOT_Sig : BOT_Sig}
             Serial_Number={Serial_Number}
-            Amount={Cir_DB[BanknoteID].Amount}
-            Price={Cir_DB[BanknoteID].Price}
-            Aritistic={Cir_DB[BanknoteID].Artistic}
+            Amount={
+              language === "Thai"
+                ? Thai_Cir_DB[BanknoteID].Amount
+                : Eng_Cir_DB[BanknoteID].Amount
+            }
+            Price={
+              language === "Thai"
+                ? Thai_Cir_DB[BanknoteID].Price
+                : Eng_Cir_DB[BanknoteID].Price
+            }
+            Aritistic={
+              language === "Thai"
+                ? Thai_Cir_DB[BanknoteID].Aritistic
+                : Eng_Cir_DB[BanknoteID].Aritistic
+            }
           />
         )}
       </View>

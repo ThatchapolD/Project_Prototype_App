@@ -1,4 +1,4 @@
-const Cir_DB = {
+const Thai_Cir_DB = {
   "5Gen11": {
     Series: "11",
     Date: "18 มิ.ย. 2512",
@@ -66,4 +66,4 @@ const Cir_DB = {
   },
 };
 
-export default Cir_DB;
+export default Thai_Cir_DB;
