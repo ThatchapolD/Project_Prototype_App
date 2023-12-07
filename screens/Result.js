@@ -9,28 +9,13 @@ import { useSelector } from "react-redux";
 //Importing Style Color
 import { GlobalColor } from "../style/Color";
 
-//Importing BN Info components
-import Banknotes_Info from "../components/Banknotes_Info";
-
 //Importing UI
 import Card from "../UI/Card";
-
-//Importing Banknotes DB
-import Thai_Cir_DB from "../assets/Banknotes_DB/Thai_DB/TH_Circulated_DB";
-import Eng_Cir_DB from "../assets/Banknotes_DB/Eng_DB/ENG_Circulated_DB";
+import Result_List from "../components/Result/Result_List";
 
 const Result = () => {
   const uploadStatus = useSelector((state) => state.uploadState.status);
   const language = useSelector((state) => state.language.languageState);
-  const imageUri = useSelector((state) => state.imageStorage.imageUri);
-  const BanknoteID = useSelector(
-    (state) => state.banknoteResultStorage.banknoteID,
-  );
-  const Serial_Number = useSelector(
-    (state) => state.banknoteResultStorage.Serial_Number,
-  );
-  const MF_Sig = useSelector((state) => state.banknoteResultStorage.MF_Sig);
-  const BOT_Sig = useSelector((state) => state.banknoteResultStorage.BOT_Sig);
 
   const navigation = useNavigation();
 
@@ -43,58 +28,7 @@ const Result = () => {
   }, [language]);
 
   if (uploadStatus === 2) {
-    return (
-      <View style={styles.Banknotes_Info_Container}>
-        <Card>
-          <Image
-            source={{
-              uri: imageUri,
-            }}
-            style={{ width: 300, height: 300 }}
-          />
-        </Card>
-        {BanknoteID === "Can't detect Banknotes" ? (
-          <Card>
-            <Text style={styles.text}>
-              {language === "Thai"
-                ? "ไม่พบเจอธันบัตร"
-                : "Can't Detect Banknotes"}
-            </Text>
-          </Card>
-        ) : (
-          <Banknotes_Info
-            Series={
-              language === "Thai"
-                ? Thai_Cir_DB[BanknoteID].Series
-                : Eng_Cir_DB[BanknoteID].Series
-            }
-            Date={
-              language === "Thai"
-                ? Thai_Cir_DB[BanknoteID].Date
-                : Eng_Cir_DB[BanknoteID].Date
-            }
-            MF_Sig={language === "Thai" ? MF_Sig : MF_Sig}
-            BOT_Sig={language === "Thai" ? BOT_Sig : BOT_Sig}
-            Serial_Number={Serial_Number}
-            Amount={
-              language === "Thai"
-                ? Thai_Cir_DB[BanknoteID].Amount
-                : Eng_Cir_DB[BanknoteID].Amount
-            }
-            Price={
-              language === "Thai"
-                ? Thai_Cir_DB[BanknoteID].Price
-                : Eng_Cir_DB[BanknoteID].Price
-            }
-            Aritistic={
-              language === "Thai"
-                ? Thai_Cir_DB[BanknoteID].Aritistic
-                : Eng_Cir_DB[BanknoteID].Aritistic
-            }
-          />
-        )}
-      </View>
-    );
+    return <Result_List />;
   } else if (uploadStatus === 1) {
     return (
       <View style={styles.container}>
@@ -134,11 +68,6 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalColor.colors.primary10,
     alignItems: "center",
     justifyContent: "center",
-  },
-
-  Banknotes_Info_Container: {
-    flex: 1,
-    backgroundColor: GlobalColor.colors.primary10,
   },
 
   text: {
