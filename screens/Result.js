@@ -56,6 +56,7 @@ const Result = () => {
             Serial_Number={Serial_Number}
             Amount={Cir_DB[BanknoteID].Amount}
             Price={Cir_DB[BanknoteID].Price}
+            Aritistic={Cir_DB[BanknoteID].Artistic}
           />
         )}
       </View>

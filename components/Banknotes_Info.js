@@ -15,6 +15,7 @@ const Banknotes_Info = ({
   Serial_Number,
   Amount,
   Price,
+  Aritistic,
 }) => {
   return (
     <View style={styles.container}>
@@ -27,6 +28,11 @@ const Banknotes_Info = ({
           <Text style={styles.text}>เลขหมวด: {Serial_Number}</Text>
           <Text style={styles.text}>จำนวนที่พิมพ์: {Amount}</Text>
           <Text style={styles.text}>ราคาโดยประมาณ: {Price}</Text>
+          <Text style={styles.text}>ลักษณะ: {Aritistic}</Text>
+          <Text style={styles.text}>
+            หมายเหตุ: ราคาจะขึ้นอยู่กับลายเซ็น, เลขหมวดและสภาพของแบงค์
+            ราคาที่กล่าวมาข้างต้นคือราคาประเมิณแบบคร่าวๆ
+          </Text>
         </ScrollView>
       </Card>
     </View>
