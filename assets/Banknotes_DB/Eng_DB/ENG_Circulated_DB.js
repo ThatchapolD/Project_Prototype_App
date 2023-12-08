@@ -5,34 +5,34 @@ const Eng_Cir_DB = {
     Amount: "9.87 Million Printed",
     Price: "150 - 500 Baht",
     Artistic:
-      "ด้านหน้ามีพระบรมฉายาสาทิสลักษณ์ของพระบาทสมเด็จพระเจ้าอยู่หัว รัชกาลที่ 9 อยู่ด้านขวา มุมด้านซ้ายมีรูปครุฑพ่าท์ ด้านหลังเป็นรูปพระที่นั่งอาภรณ์พิโมกข์ปราสาท",
+      "The front features the royal emblem of His Majesty King Rama IX on the right side, and on the left corner, there is an image of a Garuda. The back depicts an image of the palace Phra Thinang Aphorn Phimok Prasat",
   },
 
   "10Gen11": {
     Series: "11",
-    Date: "18 มิ.ย. 2512",
-    Amount: "9.8-9.10 ล้านฉบับ",
-    Price: "100 - 6000 บาท",
+    Date: "18 June 1969",
+    Amount: "9.8-9.10 Million Printed",
+    Price: "100 - 6000 Baht",
     Artistic:
-      "ด้านหน้ามีพระบรมฉายาสาทิสลักษณ์ของพระบาทสมเด็จพระเจ้าอยู่หัว รัชกาลที่ 9 อยู่ด้านขวา ด้านหลังเป็นรูปวัดเบญจมบพิตร",
+      "The front features the royal emblem of His Majesty King Rama IX on the right side. The back depicts an image of Wat Benchamabophit",
   },
 
   "20Gen11": {
     Series: "11",
-    Date: "3 มิ.ย. 2514",
-    Amount: "9.10-9.11 ล้านฉบับ",
-    Price: "300 - 9000 บาท",
+    Date: "3 June 1971",
+    Amount: "9.10-9.11 Million Printed",
+    Price: "300 - 9000 Baht",
     Artistic:
-      "ด้านหน้ามีพระบรมฉายาสาทิสลักษณ์ของพระบาทสมเด็จพระเจ้าอยู่หัว รัชกาลที่ 9 อยู่ด้านขวา ด้านหลังเป็นรูปเรือพระที่นั่งอนันตนาคราช",
+      "The front features the royal emblem of His Majesty King Rama IX on the right side. The back depicts an image of royal barges Anantanakkharat",
   },
 
   "100Gen11": {
     Series: "11",
-    Date: "5 ต.ค. 2515",
-    Amount: "9.11-9.12 ล้านฉบับ",
-    Price: "400 - 6000 บาท",
+    Date: "5 October 1972",
+    Amount: "9.11-9.12 Million Printed",
+    Price: "400 - 6000 Baht",
     Artistic:
-      "ด้านหน้ามีพระบรมฉายาสาทิสลักษณ์ของพระบาทสมเด็จพระเจ้าอยู่หัว รัชกาลที่ 9 อยู่ด้านขวา ด้านหลังเป็นรูปวัดพระศรีรัตนศาสดาราม",
+      "The front features the royal emblem of His Majesty King Rama IX on the right side. The back depicts an image of Wat Phra Kaew",
   },
 
   "500Gen11": {
@@ -41,28 +41,34 @@ const Eng_Cir_DB = {
     Amount: "9.12-9.13 Million Printed",
     Price: "1000 - 15000 Baht",
     Artistic:
-      "ด้านหน้ามีพระบรมฉายาสาทิสลักษณ์ของพระบาทสมเด็จพระเจ้าอยู่หัว รัชกาลที่ 9 อยู่ด้านขวา ด้านหลังเป็นรูปพระปรางค์สามยอด",
+      "The front features the royal emblem of His Majesty King Rama IX on the right side. The back depicts an image of Phra Prang Sam Yot",
   },
 
   "10Gen12": {
     Series: "12",
-    Date: "5 ก.ย. 2523",
-    Amount: "9.13-9.14 ล้านฉบับ",
-    Price: "20 - 300 บาท",
+    Date: "5 September 1980",
+    Amount: "9.13-9.14 Million Printed",
+    Price: "20 - 300 Baht",
+    Artistic:
+      "The front features the royal emblem of His Majesty King Rama IX on the right side. The back depicts an image of King Rama V Equestrian Monument",
   },
 
   "20Gen12": {
     Series: "12",
-    Date: "2 พ.ย. 2524",
-    Amount: "9.14-9.16 ล้านฉบับ",
-    Price: "30 - 400 บาท",
+    Date: "2 May 1981",
+    Amount: "9.14-9.16 Million Printed",
+    Price: "30 - 400 Baht",
+    Artistic:
+      "The front features the royal emblem of His Majesty King Rama IX on the right side. The back depicts an image of King Taksin",
   },
 
   "100Gen12": {
     Series: "12",
-    Date: "28 มี.ค. 2521",
-    Amount: "9.16-9.17 ล้านฉบับ",
-    Price: "150 - 20000 บาท",
+    Date: "28 March 1978",
+    Amount: "9.16-9.17 Million Printed",
+    Price: "150 - 20000 Baht",
+    Artistic:
+      "The front features the royal emblem of His Majesty King Rama IX on the right side. The back depicts an image of King Naresuan",
   },
 };
 
