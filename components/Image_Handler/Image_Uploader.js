@@ -26,7 +26,7 @@ export const uploadImage = async (imageUri, dispatch) => {
     try {
       const response = await axios.post(
         // `http://${Config.Mac_IP}:${Config.Port}${Config.Upload}`, //Node Js
-        // `http://${Config.Mac_IP}:${Config.Port_Flask}${Config.Upload}`,  //Python Flask
+        // `http://${Config.Mac_IP}:${Config.Port_Flask}${Config.Upload}`, //Python Flask
         // `http://172.20.10.2:500${Config.Upload}`, //Hotspot
         `http://${Config.Ubuntu_Server}:${Config.Port_Flask}${Config.Upload}`, //Ubuntu server
         formData,

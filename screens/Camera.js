@@ -58,9 +58,14 @@ function Camera_Screen() {
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: "center" }}>
-          We need your permission to show the camera
+          {language === "Eng"
+            ? "We need your permission to show the camera"
+            : "ต้องได้รับอนุญาตในการใช้งานกล้อง"}
         </Text>
-        <Button onPress={requestPermission} title="grant permission" />
+        <Button
+          onPress={requestPermission}
+          title={language === "Eng" ? "Grant a permission" : "กดเพื่ออนุญาต"}
+        />
       </View>
     );
   }
@@ -95,12 +100,18 @@ function Camera_Screen() {
           />
         </Card>
         <View style={{ padding: 10 }}>
-          <Button
-            onPress={handleImageUpload}
-            title={
-              language === "Eng" ? "Upload a picture" : "กดเพื่อทำการอัปโหลดรูป"
-            }
-          ></Button>
+          {uploadStatus === 1 ? (
+            <View />
+          ) : (
+            <Button
+              onPress={handleImageUpload}
+              title={
+                language === "Eng"
+                  ? "Upload a picture"
+                  : "กดเพื่อทำการอัปโหลดรูป"
+              }
+            ></Button>
+          )}
           <Button
             onPress={handleReopenCamera}
             title={
