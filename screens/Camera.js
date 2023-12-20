@@ -57,15 +57,16 @@ function Camera_Screen() {
     // Camera permissions are not granted yet
     return (
       <View style={styles.container}>
-        <Text style={{ textAlign: "center" }}>
-          {language === "Eng"
-            ? "We need your permission to show the camera"
-            : "ต้องได้รับอนุญาตในการใช้งานกล้อง"}
-        </Text>
-        <Button
-          onPress={requestPermission}
-          title={language === "Eng" ? "Grant a permission" : "กดเพื่ออนุญาต"}
-        />
+        <Card>
+          <Text style={styles.text}>
+            {language === "Eng"
+              ? "We need your permission to show the camera"
+              : "ต้องได้รับอนุญาตในการใช้งานกล้อง"}
+          </Text>
+          <MainButton onPressed={requestPermission}>
+            {language === "Eng" ? "Grant a permission" : "กดเพื่ออนุญาต"}
+          </MainButton>
+        </Card>
       </View>
     );
   }
@@ -176,8 +177,10 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: "bold",
     color: "white",
+    textAlign: "center",
+    paddingBottom: 10,
   },
 });
