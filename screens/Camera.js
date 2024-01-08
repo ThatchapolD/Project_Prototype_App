@@ -97,7 +97,12 @@ function Camera_Screen() {
           <Image
             source={{ uri: imageUri }}
             // style={{ flex: 1 }}
-            style={{ width: 300, height: 300 }}
+            style={{
+              width: 300,
+              height: 300,
+              resizeMode: "cover",
+              alignSelf: "center",
+            }}
           />
         </Card>
         <View style={{ padding: 10 }}>

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Pressable } from "react-native";
+import { StyleSheet, View, Pressable, Image, Text } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
@@ -12,6 +12,8 @@ import TutorialListThai from "../components/Tutorial/TutorialListThai";
 //Import Redux slicer
 import { useDispatch, useSelector } from "react-redux";
 import { selectLanguage } from "../redux/slicers/languageSlice";
+
+import Card from "../UI/Card";
 
 function Tutorial() {
   //For Navigate
@@ -39,6 +41,24 @@ function Tutorial() {
           <Entypo name="globe" size={36} color={GlobalColor.colors.accent10} />
         </Pressable>
       </View>
+      <Card>
+        <Image
+          source={require("../assets/Example.jpg")}
+          style={{
+            height: 200,
+            width: 300,
+            resizeMode: "cover",
+            alignSelf: "center",
+          }}
+        />
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          <Text style={styles.text}>
+            {language === "Eng"
+              ? "Please take a photo of the banknote similar to the image above."
+              : "กรุณาถ่ายรูปธนบัตรให้เหมือนกับรูปข้างบน"}
+          </Text>
+        </View>
+      </Card>
       <View style={styles.itemList}>
         {language === "Eng" ? <TutorialList /> : <TutorialListThai />}
       </View>
@@ -60,5 +80,5 @@ const styles = StyleSheet.create({
     color: "white",
   },
 
-  languageBtn: { alignItems: "flex-end", paddingTop: 12, paddingRight: 12 },
+  languageBtn: { alignItems: "flex-end", paddingTop: 10, paddingRight: 12 },
 });
