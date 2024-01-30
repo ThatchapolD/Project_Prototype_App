@@ -15,8 +15,8 @@ import Banknotes_Info from "../Banknotes_Info";
 import Card from "../../UI/Card";
 
 //Importing Banknotes DB
-import Thai_Cir_DB from "../../assets/Banknotes_DB/Thai_DB/TH_Circulated_DB";
-import Eng_Cir_DB from "../../assets/Banknotes_DB/Eng_DB/ENG_Circulated_DB";
+import Thai_DB from "../../assets/Banknotes_DB/TH_Banknotes_DB";
+import Eng_DB from "../../assets/Banknotes_DB/ENG_Banknotes_DB";
 
 const Result_List = () => {
   const language = useSelector((state) => state.language.languageState);
@@ -50,31 +50,31 @@ const Result_List = () => {
         <Banknotes_Info
           Series={
             language === "Thai"
-              ? Thai_Cir_DB[BanknoteID].Series
-              : Eng_Cir_DB[BanknoteID].Series
+              ? Thai_DB[BanknoteID].Series
+              : Eng_DB[BanknoteID].Series
           }
           Date={
             language === "Thai"
-              ? Thai_Cir_DB[BanknoteID].Date
-              : Eng_Cir_DB[BanknoteID].Date
+              ? Thai_DB[BanknoteID].Date
+              : Eng_DB[BanknoteID].Date
           }
           MF_Sig={language === "Thai" ? MF_Sig : MF_Sig}
           BOT_Sig={language === "Thai" ? BOT_Sig : BOT_Sig}
           Serial_Number={Serial_Number}
           Amount={
             language === "Thai"
-              ? Thai_Cir_DB[BanknoteID].Amount
-              : Eng_Cir_DB[BanknoteID].Amount
+              ? Thai_DB[BanknoteID].Amount
+              : Eng_DB[BanknoteID].Amount
           }
           Price={
             language === "Thai"
-              ? Thai_Cir_DB[BanknoteID].Price
-              : Eng_Cir_DB[BanknoteID].Price
+              ? Thai_DB[BanknoteID].Price
+              : Eng_DB[BanknoteID].Price
           }
           Aritistic={
             language === "Thai"
-              ? Thai_Cir_DB[BanknoteID].Artistic
-              : Eng_Cir_DB[BanknoteID].Artistic
+              ? Thai_DB[BanknoteID].Artistic
+              : Eng_DB[BanknoteID].Artistic
           }
         />
       )}
