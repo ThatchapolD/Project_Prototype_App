@@ -339,4 +339,4 @@ const Thai_DB = {
   },
 };
 
-export default Thai_Cir_DB;
+export default Thai_DB;
