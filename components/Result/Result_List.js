@@ -76,6 +76,11 @@ const Result_List = () => {
               ? Thai_DB[BanknoteID].Artistic
               : Eng_DB[BanknoteID].Artistic
           }
+          Remarks={
+            language === "Thai"
+              ? Thai_DB[BanknoteID].Remarks
+              : Eng_DB[BanknoteID].Remarks
+          }
         />
       )}
     </View>
