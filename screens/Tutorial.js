@@ -1,4 +1,11 @@
-import { StyleSheet, View, Pressable, Image, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Pressable,
+  Image,
+  Text,
+  ScrollView,
+} from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
@@ -59,9 +66,11 @@ function Tutorial() {
           </Text>
         </View>
       </Card>
-      <View style={styles.itemList}>
-        {language === "Eng" ? <TutorialList /> : <TutorialListThai />}
-      </View>
+      <ScrollView>
+        <View style={styles.itemList}>
+          {language === "Eng" ? <TutorialList /> : <TutorialListThai />}
+        </View>
+      </ScrollView>
     </View>
   );
 }
