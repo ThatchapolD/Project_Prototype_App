@@ -283,6 +283,14 @@ const Eng_DB = {
     Remarks:
       "This model uses polymer instead of paper, and the bottom right corner beneath the price digits features an emblem symbolizing the celebration of the completion of 50 years of reign.",
   },
+  memo_2545_100: {
+    Series: "The commemorating banknote value of 100 baht.",
+    Date: " 2545",
+    Amount: " Million Printed",
+    Price: " Baht",
+    Artistic: "",
+    Remarks: "",
+  },
   memo_2547: {
     Series: "The commemorating banknote value of 100 baht.",
     Date: "22 April 2004",

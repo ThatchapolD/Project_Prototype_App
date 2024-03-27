@@ -75,7 +75,7 @@ function Camera_Screen() {
     const image = await launchCameraAsync({
       aspect: [16, 9],
       quality: 1,
-      allowsEditing: true,
+      allowsEditing: false,
     });
     console.log(image.assets[0].uri);
     dispatch(selecting(image.assets[0].uri));
